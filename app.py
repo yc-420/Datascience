@@ -3,8 +3,10 @@ import pandas as pd
 import joblib
 
 # --------- Load artifacts ----------
-model = joblib.load("rf.joblib")
-feature_cols = joblib.load("feature_columns.joblib")  # list of column names used in training
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = joblib.load(os.path.join(BASE_DIR, "rf_model.joblib"))
+feature_cols = joblib.load(os.path.join(BASE_DIR, "feature_columns.joblib"))  # list of column names used in training
 
 st.title("Garment Worker Productivity Prediction")
 st.write("Predict **actual_productivity** using the trained Random Forest model.")
